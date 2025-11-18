@@ -1,0 +1,73 @@
+Project: "FamilyTree" — a production-ready Next.js (App Router) web app in TypeScript.
+
+Goal: scaffold a complete, well-structured starter application that implements a collaborative family-tree builder and viewer. Use modern best practices, clear file organization, and include code for backend, frontend, DB, auth, and deployment.
+
+Stack & tech requirements:
+- Next.js (latest, App Router) + TypeScript.
+- Styling: Tailwind CSS (utility-first).
+- Visualization: React Flow for the family tree canvas (custom nodes & custom edges with labels and arrow heads).
+- ORM: Prisma with Postgres.
+- Auth: NextAuth (email + Google OAuth). Sessions server-side; protect API routes.
+- API layer: Next.js Route Handlers (or tRPC if you prefer — implement as Next API routes if tRPC not supported).
+- File storage: supabase-storage or S3-compatible (abstract via env var).
+- Deployment: Vercel instructions in README.
+
+Features (implement these with routes, components, and sample UI):
+1. Landing page + signup/login (simple marketing copy + CTA).
+2. Dashboard: list of trees (create, delete, open), recent activity, invitations.
+3. Tree page (`/dashboard/[treeId]`):
+   - React Flow canvas rendering Person nodes (photo thumbnail + full name).
+   - Relationship edges labeled on the line (e.g., "father", "mother", "spouse") with arrow/bi-directional visual semantics.
+   - Positioning by generation (compute generation index server-side or client and use Y-axis layers; siblings horizontally).
+   - Zoom controls (+, -, Reset, Fit to View) and mouse-wheel/pinch zoom support.
+   - Drag to adjust minor positions but maintain generation-based layout on auto-arrange.
+   - Click a node to open a PersonModal with full fields and edit form (owner/editor only).
+   - Right sidebar: toolbar (Search, Add Person, Add Relationship, Share, Export PDF/Image).
+4. Person model: fields: id, fullName, givenName, familyName, gender, birthDate, deathDate, photos (URLs), medicalFlags (list), notes, privacyLevel, createdBy, createdAt, verified.
+5. Relationship model: id, fromId, toId, type ("parent","spouse","sibling","guardian","adopted"), label, approved, source.
+6. Search: live typeahead; on select center & highlight node and flash its card.
+7. Collaboration/share:
+   - Owner can invite people by email and set role (owner/editor/viewer/suggestor).
+   - Generate shareable links with token + permission.
+   - Suggest change flow: non-editors can propose edits which appear in owner’s inbox for approval.
+8. Export: implement client-side export of visible canvas to PNG & PDF (use `html-to-image` or `dom-to-image` + `jsPDF`), and also server-side large-export endpoint if canvas > client limits (optional).
+9. Import/Export data: JSON export (full tree), and a CSV minimal import (person list). Add README notes for GEDCOM import as a next-step.
+10. Privacy & consent:
+    - Sensitive fields (medicalFlags) are opt-in and hidden by default; show consent text on profile if enabled.
+    - All personal data private by default.
+11. Accessibility & i18n:
+    - Basic ARIA labels, keyboard navigation for tree controls.
+    - Prepare i18n-ready text (English default). Add a language switcher placeholder.
+12. DB & seed:
+    - Provide `prisma/schema.prisma` with User, Tree, Person, Relationship, Collaboration models (use UUIDs).
+    - `prisma/seed.ts` script to create one sample tree with 8 persons and relationships, plus one owner user.
+13. Tests:
+    - Add at least a couple of unit/integration tests (Jest + React Testing Library) for: TreeCanvas rendering sample nodes, PersonModal open on click.
+14. Dev DX:
+    - .env.example listing required variables: DATABASE_URL, NEXTAUTH_URL, NEXTAUTH_SECRET, SUPABASE_URL, SUPABASE_ANON_KEY.
+    - `pnpm` or `npm` scripts: dev, build, start, prisma:migrate, prisma:seed, test, lint, format.
+15. README:
+    - Clear setup steps, how to run migrations & seed, how to run locally with Supabase/Postgres, how to deploy to Vercel, notes on env vars, and how to use the app (short user guide).
+16. Code quality:
+    - Use ESLint + Prettier.
+    - Well-structured components in `/components`, pages in `/app`, lib helpers in `/lib`.
+    - Use Tailwind + small, consistent design tokens/classes.
+17. Commit history & README:
+    - Create logical commits with clear messages (scaffold, auth, prisma models, reactflow integration, person modal, share modal, export).
+18. Bonus (if possible):
+    - Provide a small serverless function to generate a PDF snapshot for very large trees.
+    - Add a simple analytics event (tree created, person added) logged to console or a lightweight analytics endpoint.
+
+Deliverables:
+- A Git repository with all code, working locally after setting env vars and running `npm install` + `pnpm prisma migrate` + `pnpm prisma seed`.
+- A short deployment guide for Vercel and sample `.vercel` config if needed.
+- Example exported PDF/PNG of the seeded sample tree in the repo (`/examples/sample-tree.png`).
+
+Tone & UX:
+- Clean, minimal, beginner-friendly UI so non-technical users can add people easily.
+- Keep interactions simple: large buttons, clear labels, step-by-step modal for adding people/relations.
+- Emphasize privacy and consent for health info.
+
+Now scaffold the repo accordingly. If any feature is too large, produce a clear TODO list with priorities and implement the highest-priority features first (Tree viewer, add person, search, share, export). Provide instructions to finish the rest.
+
+End.
