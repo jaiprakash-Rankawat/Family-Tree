@@ -39,3 +39,6 @@ prisma/migrations/
 # IDE
 .vscode/
 .idea/
+
+# pnpm
+.local/
