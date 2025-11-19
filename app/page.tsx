@@ -32,10 +32,10 @@ export default function HomePage() {
           <h1 className="mb-6 text-5xl font-bold text-gray-900">
             Build Your Family History Together
           </h1>
-          <p className="mb-8 text-xl text-gray-600">
-            Create, explore, and share your family tree with an intuitive
-            visual interface. Collaborate with relatives and preserve your
-            heritage for future generations.
+          <p className="mb-8 text-xl text-black">
+            Create, explore, and share your family tree with an intuitive visual
+            interface. Collaborate with relatives and preserve your heritage for
+            future generations.
           </p>
           <Link
             href="/auth/signup"
@@ -48,8 +48,10 @@ export default function HomePage() {
         <div className="mt-24 grid gap-8 md:grid-cols-2 lg:grid-cols-4">
           <div className="rounded-lg bg-white p-6 shadow-sm">
             <TreePine className="mb-4 h-12 w-12 text-green-600" />
-            <h3 className="mb-2 text-xl font-semibold">Visual Tree Builder</h3>
-            <p className="text-gray-600">
+            <h3 className="mb-2 text-xl font-semibold text-blue-900">
+              Visual Tree Builder
+            </h3>
+            <p className="text-black">
               Interactive canvas with drag-and-drop functionality and automatic
               layout
             </p>
@@ -57,8 +59,10 @@ export default function HomePage() {
 
           <div className="rounded-lg bg-white p-6 shadow-sm">
             <Users className="mb-4 h-12 w-12 text-blue-600" />
-            <h3 className="mb-2 text-xl font-semibold">Collaborate</h3>
-            <p className="text-gray-600">
+            <h3 className="mb-2 text-xl font-semibold text-blue-900">
+              Collaborate
+            </h3>
+            <p className="text-black">
               Invite family members and work together to build a complete
               history
             </p>
@@ -66,16 +70,20 @@ export default function HomePage() {
 
           <div className="rounded-lg bg-white p-6 shadow-sm">
             <Shield className="mb-4 h-12 w-12 text-purple-600" />
-            <h3 className="mb-2 text-xl font-semibold">Privacy First</h3>
-            <p className="text-gray-600">
+            <h3 className="mb-2 text-xl font-semibold text-blue-900">
+              Privacy First
+            </h3>
+            <p className="text-black">
               Control who sees what with granular privacy settings and consent
             </p>
           </div>
 
           <div className="rounded-lg bg-white p-6 shadow-sm">
             <Share2 className="mb-4 h-12 w-12 text-orange-600" />
-            <h3 className="mb-2 text-xl font-semibold">Share & Export</h3>
-            <p className="text-gray-600">
+            <h3 className="mb-2 text-xl font-semibold text-blue-900">
+              Share & Export
+            </h3>
+            <p className="text-black">
               Export your tree as PDF or image, or share with custom links
             </p>
           </div>
@@ -83,8 +91,11 @@ export default function HomePage() {
       </main>
 
       <footer className="mt-24 border-t bg-gray-50 py-8">
-        <div className="mx-auto max-w-7xl px-4 text-center text-gray-600">
-          <p>&copy; 2024 FamilyTree. Built with care for preserving family histories.</p>
+        <div className="mx-auto max-w-7xl px-4 text-center text-black">
+          <p>
+            &copy; 2025 FamilyTree. Built with care for preserving family
+            histories.
+          </p>
         </div>
       </footer>
     </div>
